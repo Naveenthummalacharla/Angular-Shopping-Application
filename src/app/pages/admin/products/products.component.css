@@ -1,0 +1,21 @@
+@media screen {
+    .cards{
+        width: 50px;
+        height: 80px;
+        
+    }
+}
+.two-line {
+  width: 200px; /* Set a specific width for the paragraph container */
+  white-space: nowrap; /* Prevent wrapping to a new line */
+  overflow: hidden; /* Hide any content that overflows the specified width */
+  text-overflow: ellipsis;
+  }
+.bg{
+    background-color:darkslategrey;
+    border:none
+}
+.pad{
+    width:100%;
+}
+

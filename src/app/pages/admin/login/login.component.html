@@ -1,0 +1,31 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff"
+ type = "ball-scale-multiple" [fullScreen] = "true">
+ <i class="fa fa-spinner fa-spin text-primary" style="font-size:54px;color: aliceblue;"></i>
+ <p class="mt-2" style="color: white" > Loading... </p>
+</ngx-spinner>
+<div class="container">
+    <div class="left-section"></div>
+    <div class="right-section">
+        <div class="login-container">
+            <form class="login-form">
+                <h2 class="login-title"><i class="fas fa-user-circle"></i> Login</h2>
+                <div class="text-danger mb-2">{{this. errorMessage}}</div>
+                <div class="form-control">
+                    <i class="fas fa-user icon"></i>
+                    <input type="text" [(ngModel)]="loginObj.username" placeholder="Username" name="username" id="username" required>
+                </div>
+                <div class="form-control">
+                    <i class="fas fa-lock icon"></i>
+                    <input type="password" [(ngModel)]="loginObj.password" name="password" placeholder="Password" id="password" >
+                </div> 
+                <div class="social-login">
+                    <i class="fab fa-google social-icon"></i>
+                    <i class="fab fa-facebook-f social-icon"></i>
+                    <i class="fab fa-twitter social-icon"></i>
+                </div>
+                <button type="submit" (click)="Login()">Login</button>
+            </form>
+        </div>
+    </div>
+</div>
+

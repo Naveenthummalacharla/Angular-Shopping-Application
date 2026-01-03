@@ -1,0 +1,84 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-4" style="margin-top: 105px">
+      <app-filter-products (filterdata)="filterlist($event)"></app-filter-products>
+    </div>
+    <div class="col-8">
+      <div class="py-3 py-md-5">
+        <div class="container">
+          <div class="ms-4">
+            <h4 *ngIf="this.activecomponent !== 'all'" class="mt-2 ms-4 fs-4" style="
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman',
+                  serif;
+              ">
+              {{
+              filterProducts.length > 0
+              ? filterProducts[0].productName
+              : "No Products"
+              }}s
+            </h4>
+            <h4 *ngIf="this.activecomponent === 'all'" class="mt-2 ms-4 fs-4" style="
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman',
+                  serif;
+              ">
+              All Products List
+            </h4>
+          </div>
+          <div class="row">
+            <div class="col-md-4 mb-5" *ngFor="let product of filterProducts">
+              <div class="m-4 w-100" style="height: 420px">
+                <div class="product-container">
+                  <div>
+                    <div class="product-container">
+                      <a [routerLink]="['/viewproduct/', product.id, 'product']" class="product-link">
+                        <img mat-card-image [src]="product.firstproductImageUrl" alt="Laptop" class="product-image"
+                          (mouseenter)="ChangeImage(product, true)" (mouseleave)="ChangeImage(product, false)" />
+                      </a>
+                      <button class="add-to-cart-button" (click)="addToCart(product)">
+                        <i class="bi bi-bag-plus-fill"></i> Add to Cart
+                      </button>
+                      <span *ngIf="product.stock > 0; else outOfStock" class="status bg-white text-black p-2 rounded-2">
+                        On Sale
+                      </span>
+                      <ng-template #outOfStock>
+                        <span class="status bg-danger text-center p-2 rounded-2 me-2">Out of Stock</span>
+                      </ng-template>
+                    </div>
+                    
+                    <a [routerLink]="['/viewproduct/', product.id, 'product']" style="text-decoration: none">
+                      <p class="text-black product-offers text-center mt-4 fs-4">
+                        {{ product.productName }}
+                      </p>
+                      <div class="text-black product-offers text-center mt-2 fs-5">
+                        {{ product.material }}
+                      </div>
+                    </a>
+                    <div class="text-center mt-2">
+                      <span class="me-2 product-offers">{{ product.off }}%</span>
+                      <span class="fs-5 me-3 text-danger product-offers">{{
+                        product.givingPrice | currency : "INR"
+                        }}</span>
+                      <span class="original-price" style="text-decoration: line-through">{{ product.productPrice |
+                        currency : "INR" }}</span>
+                    </div>
+                  </div>
+                  <div class="mt-2">
+                    <button class="favorite" mat-icon-button color="warn">
+                      <mat-icon>favorite</mat-icon>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col">
+  <p-dialog header=" Shopping Cart" [modal]="true" [(visible)]="visible" [style]="{ width: '90vw' }"
+    [maximizable]="true">
+    <app-customercart [CartItems]="CartItems" [LastnameFromproductlist]="activecomponent"></app-customercart>
+  </p-dialog>
+</div>

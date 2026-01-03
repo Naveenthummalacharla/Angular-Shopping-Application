@@ -1,0 +1,162 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <span class="fs-6 me-5" style="color:rgb(120, 120, 120);">Contact</span><span>{{shippingInformaation.mail}}</span>
+                  </div>
+                  <div class="text-primary" style="cursor: pointer;" (click)="Changetoinformation()">Change</div>
+                </div>
+                <hr>
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <span class="fs-6 me-5" style="color:rgb(120, 120, 120);">Ship to</span><span>{{shippingInformaation.address}}</span>
+                    </div>
+                  <div  class="text-primary" style="cursor: pointer;" (click)="Changetoinformation()">Change</div>
+                </div>
+                <hr>
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <span class="fs-6 me-5" style="color:rgb(120, 120, 120);">Shipping Method</span><span>{{shippingname}}.<b class="ms-2">{{shippingInformaation.shippingmethodvalue | currency:"INR"}}</b></span>
+                    </div>
+                  <div  class="text-primary" style="cursor: pointer;" (click)="ChangetoShipping()">Change</div>
+                </div>
+               </div>
+               <div class="payemnt mt-4">
+                <h2>Payment</h2>
+                <div *ngIf="showCOD">
+                <span class="mt-2 " style="color:rgb(200, 150, 210);">All transactions are secure and encrypyed.</span>
+                <input pInputText type="text"   class="p-inputtext-lg w-100 mt-2" readonly [(ngModel)]="paymentmethod"/>
+                </div>
+                <div *ngIf="showPrepaidorders">
+                  <span>All transactions are secured and encrypted.</span>
+                  <div class="box mt-2">
+                    <div class="border">
+                    <span><b>Cards, Upi, NB, Wallets, BNPL by PayU India.</b></span>
+                    <span class="offset-2">
+                     <i class="	fa fa-cc-visa fs-4" style="color:orange"></i>
+                     <i class="fa fa-cc-mastercard fs-4 ms-2" style="color:red"></i>
+                     <i class="	fa fa-credit-card fs-4 ms-2"></i>
+                     <i class="	fa fa-paypal fs-4 ms-2"></i>
+                    </span>
+                </div>
+                    <div class="offset-3 mt-2">
+                        <img src="assets\atmcard .jpeg"/>
+                    </div>
+                    <p class="text-center mt-3">After clicking “Pay now”, you will be redirected to Cards,<br> 
+                        UPI, NB, Wallets, BNPL by PayU India to 
+                        complete your purchase securely.</p>
+                  </div>
+                </div>
+               </div>
+               <div class="billingadress mt-4">
+                <h2 class="mb-2">Billing Adress</h2>
+                <span style="color:rgb(200, 150, 210);">Select the address that matches your card or payment method</span>
+                <div class="box mt-3" >
+                    <div>
+                        <div type="button" class="flex align-items-center">
+                            <p-radioButton name="pizza"  value = "false" inputId="ingredient1" [(ngModel)]="billingaddress" ></p-radioButton>
+                            <label for="ingredient1" class="ms-3 ">Same as Shipping Adress</label>
+                          </div>                      
+                    </div>
+                    <hr>
+                    <div>
+                        <div type="button" class="flex align-items-center" >
+                            <p-radioButton name="pizza" value = "true" inputId="ingredient2"  [(ngModel)]="billingaddress" ></p-radioButton>
+                            <label for="ingredient2" class="ms-3">Use a Differebt Billing Adress </label>
+                            </div>  
+                            <div *ngIf="billingaddress === 'true'" [ngClass]="{'bg':billingaddress==='true'}" class="mt-3">
+                                <form [formGroup]="infromationfrm" (ngSubmit)=" CompleteOrder()">
+                                    <div>
+                                        <input pInputText type="text" (input)="mailvalidation()"   class="p-inputtext-lg w-100" formControlName="mail" placeholder="Mail" />
+                                        <div class="mt-2 ms-1"  *ngIf="infromationfrm.controls['mail'].touched && infromationfrm.controls['mail'].invalid">
+                                            <span class="text-danger" *ngIf="infromationfrm.controls['mail'].errors?.['required']">Required Mail</span>
+                                        </div>
+                                        <div class="text-danger" *ngIf="mailerror">{{mailerror}} </div>
+                                        </div>
+                                  <div class="flex align-items-center mt-3">
+                                      <div class="mt-5 col-md-12">
+                                        <div>
+                                            <p-dropdown [options]="cities" class="contries" formControlName="selectedCity" optionLabel="name" [showClear]="true"
+                                                placeholder="Country"></p-dropdown>
+                                                <div class="mt-2 ms-3"  *ngIf="infromationfrm.controls['selectedCity'].touched && infromationfrm.controls['selectedCity'].invalid">
+                                                    <span class="text-danger" *ngIf="infromationfrm.controls['selectedCity'].errors?.['required']">Required City</span>
+                                                  </div>
+                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="col-6">
+                                                <input pInputText type="text" formControlName="firstname" class="p-inputtext-lg w-100" placeholder="First Name" />
+                                                <div class="mt-2 ms-3"  *ngIf="infromationfrm.controls['firstname'].touched && infromationfrm.controls['firstname'].invalid">
+                                                    <span class="text-danger" *ngIf="infromationfrm.controls['firstname'].errors?.['required']">Required FirstName</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <input pInputText type="text"  formControlName="lastname"  class="p-inputtext-lg w-100" placeholder="Last Name" />
+                                                <div class="mt-2 ms-3"  *ngIf="infromationfrm.controls['lastname'].touched && infromationfrm.controls['lastname'].invalid">
+                                                    <span class="text-danger" *ngIf="infromationfrm.controls['lastname'].errors?.['required']">Required LastName</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3">
+                                            <input pInputText type="text"   formControlName="companyname"  class="p-inputtext-lg w-100" placeholder="Company(optional)" />
+                                        </div>
+                                        <div class="mt-3">
+                                            <input pInputText type="text" formControlName="address" class="p-inputtext-lg w-100" placeholder="Address" />
+                                            <div class="mt-2 ms-3"  *ngIf="infromationfrm.controls['address'].touched && infromationfrm.controls['address'].invalid">
+                                                <span class="text-danger" *ngIf="infromationfrm.controls['address'].errors?.['required']">Required Address</span>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3">
+                                            <input pInputText type="text" formControlName="appartment" class="p-inputtext-lg w-100" placeholder="Appartment,suite,etc.(optional)" />
+                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="col-4">
+                                                <input pInputText type="text" formControlName="city" class="p-inputtext-lg w-100" placeholder="City" />
+                                                <div class="mt-2 ms-1"  *ngIf="infromationfrm.controls['city'].touched && infromationfrm.controls['city'].invalid">
+                                                    <span class="text-danger" *ngIf="infromationfrm.controls['city'].errors?.['required']">Required City</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <p-dropdown [options]="states" formControlName="selectedState"  optionLabel="name" [showClear]="true"
+                                                placeholder="State" class="states"></p-dropdown>
+                                                <div class="mt-2 ms-1"  *ngIf="infromationfrm.controls['selectedState'].touched && infromationfrm.controls['selectedState'].invalid">
+                                                    <span class="text-danger" *ngIf="infromationfrm.controls['selectedState'].errors?.['required']">Required State</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <input pInputText type="number" (input)="pincodeValidation()"  formControlName="pincode"  class="p-inputtext-lg w-100" placeholder="Pincode" />
+                                                <div class="mt-2 ms-1"  *ngIf="infromationfrm.controls['pincode'].touched && infromationfrm.controls['pincode'].invalid">
+                                                    <span class="text-danger" *ngIf="infromationfrm.controls['pincode'].errors?.['required']">Required Pincode</span>
+                                                </div>
+                                                <div class="text-danger" *ngIf="pincodeError">{{this.pincodeError}} </div>
+                                            </div>
+                                            <div class="col-12 mt-4">
+                                                <input pInputText type="text" (input)="phonevalidation()"  class="p-inputtext-lg w-100" formControlName="phone" placeholder="Phone" />
+                                                <div class="mt-2 ms-1"  *ngIf="infromationfrm.controls['phone'].touched && infromationfrm.controls['phone'].invalid">
+                                                    <span class="text-danger" *ngIf="infromationfrm.controls['phone'].errors?.['required']">Required PhoneNumber</span>
+                                                </div>
+                                                <div class="text-danger" *ngIf="phoneError">{{this.phoneError}} </div>
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+                            </form>
+                            </div>
+                    </div>                           
+                </div>
+               </div>
+               <div class="mt-5 d-flex justify-content-between ">
+                <div >
+                    <button  class="btn btn-primary" (click)="returntoshipping()"><i class="bi bi-skip-backward-fill"></i> Return to Shipping</button>
+                </div>
+                <div>
+                    <button class="btn btn-success" (click)=" CompleteOrder()"><i class="bi bi-currency-rupee"></i>Compleate Order</button>
+               </div>
+        </div>
+
+    </div>
+
+</div>
+

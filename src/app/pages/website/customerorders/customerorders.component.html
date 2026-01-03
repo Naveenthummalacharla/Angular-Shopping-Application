@@ -1,0 +1,65 @@
+
+ <div class="container-fluid bg">
+  <div class="col-md-12">
+    <div class="row ">
+      <div class="col-md-6">
+        <div class="flex justify-content-center offset-2 mt-5">
+          <ul class="breadcrumb offset-2">
+            <li><a routerLink="/cart">Cart</a></li>
+            <li><a routerLink="/information">Information</a></li>
+            <li><a href="#">Shipping</a></li>
+            <li><a href="#">Payments</a></li>
+          </ul>
+          <div class="mt-5 mb-5 bg">
+           <div >
+            <div *ngIf="currentStep === 1">
+              <app-information-form (nextClicked)="NextStep($event)"></app-information-form>
+            </div>
+            <div *ngIf="currentStep === 2">
+              <app-shipping-form (nextClicked)="NextStep($event)"></app-shipping-form>
+            </div>
+            <div *ngIf="currentStep === 3" >
+              <app-payment-form (nextClicked)="NextStep($event)" [productItemsData]="productItems"></app-payment-form>
+            </div>
+            </div>
+          </div>
+         </div>
+      </div>
+      <div class="col-md-6  mt-5">
+      
+       </div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+<div class="modal" id="myModal" [ngClass]="{'fade-background': showModal}">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header bg-warning">
+          <h4 class="modal-title offset-4 ">Order Cancel</h4>
+          <button type="button"  class="btn-close" (click)="closeorderCancel()" data-bs-dismiss="modal"></button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+          <mat-form-field class="example-full-width w-100">
+            <mat-label>Submit the Reason</mat-label>
+            <textarea matInput [(ngModel)]="reason" (input)="validate()"  placeholder="Submit Valid Reason"></textarea>
+            <mat-hint *ngIf="reasonError" class="text-danger">{{this.reasonError}}</mat-hint>
+          </mat-form-field>
+        <!-- <textarea class="form-control" [(ngModel)]="reason" (input)="validate()" placeholder="Submit the Reason"></textarea>
+        <div *ngIf="reasonError" class="text-danger">{{this.reasonError}}</div> -->
+        </div>
+
+  
+        <!-- Modal footer -->
+        <div class="modal-footer justify-content-between">
+         <button class="btn btn-success"  (click)="submitReason()">Submit</button>
+         <button class="btn btn-warning" (click)="Resetreason()">Reset</button>
+          <button type="button" class="btn btn-danger" (click)="closeorderCancel()" data-bs-dismiss="modal">Close</button>
+  </div>

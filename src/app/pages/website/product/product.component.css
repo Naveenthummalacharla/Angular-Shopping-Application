@@ -1,0 +1,101 @@
+/* .product-card{
+    background-color: #fff;
+    margin-bottom: 24px;
+}
+.product-card a{
+    text-decoration: none;
+}
+.product-card .stock{
+    position: absolute;
+    color: #fff;
+    border-radius: 4px;
+    padding: 2px 12px;
+    margin: 8px;
+    font-size: 12px;
+}
+.product-card .product-card-img{
+    max-height: 260px;
+    overflow: hidden;
+    border-bottom: 1px solid #ccc;
+}
+.product-card .product-card-img img{
+    width: 100%;
+    border-radius: 10px;
+}
+.product-card .product-card-body{
+    padding: 10px 10px;
+}
+.product-card .product-card-body .product-brand{
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 4px;
+    color: #937979;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.product-card .product-card-body .product-name{
+    font-size: 20px;
+    font-weight: 600;
+    color: #000;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.product-card .product-card-body .selling-price{
+    font-size: 22px;
+    color: #000;
+    font-weight: 600;
+    margin-right: 8px;
+}
+.product-card .product-card-body .original-price{
+    font-size: 18px;
+    color: #937979;
+    font-weight: 400;
+    text-decoration: line-through;
+}
+.product-card .product-card-body .btn1{
+    border: 1px solid;
+    margin-right: 3px;
+    border-radius: 0px;
+    font-size: 12px;
+    margin-top: 10px;
+}
+a{
+ text-decoration: none;
+} */
+.banner-image {
+    transition: filter 0.3s ease; /* Adding transition for smooth effect */
+    cursor: pointer;
+}
+
+.banner-image:hover {
+    filter: brightness(130%); /* Increasing brightness to make it white */
+}
+.image-add{
+    transition: filter 0.3s ease; /* Adding transition for smooth effect */
+    cursor: pointer;
+}
+.image-add:hover{
+    filter: brightness(40%) contrast(80%); 
+}
+.image-text {
+    position: absolute; /* Position the text absolutely */
+    top: 50%; /* Align the text vertically in the middle */
+    left: 50%; /* Align the text horizontally in the middle */
+    transform: translate(-50%, -50%); /* Center the text */
+    color: white; /* Set the color of the text */
+    font-size: 24px; /* Set the font size of the text */
+}
+.image-container {
+    position: relative; /* Ensure the container is positioned relative */
+    width: 80%; /* Set the width of the container */
+    height: 300px; /* Set the height of the container */
+}
+.shortbanner{
+    transition: filter 0.3s ease; /* Adding transition for smooth effect */
+    cursor: pointer;
+}
+.shortbanner:hover{
+    filter: brightness(120%); 
+}

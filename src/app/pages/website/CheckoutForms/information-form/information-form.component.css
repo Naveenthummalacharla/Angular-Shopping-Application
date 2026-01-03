@@ -1,0 +1,15 @@
+:host ::ng-deep .contries .p-dropdown{
+    width:585px;
+}
+
+:host ::ng-deep .states .p-dropdown{
+    width:188px;
+    height: 52px;
+}
+:host ::ng-deep .returntocart .p-button{
+    border-radius: 9px;
+}
+:host ::ng-deep .continueshipping .p-button{
+    border-radius: 9px;
+}
+

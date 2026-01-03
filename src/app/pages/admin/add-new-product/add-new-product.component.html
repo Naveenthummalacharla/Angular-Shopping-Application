@@ -1,0 +1,200 @@
+<div class="col-12 mt-5">
+    <div class="card shadow">
+      <div class="card-header bg  shadow d-flex ">
+          <div class="col-6 ms-2 mt-2 me-5 fs-5 text-white">
+           New Product List
+          </div>
+          <div class="col-6">
+            <button class="btn btn-danger offset-9 fs-5" [routerLink]="['/products']"><i class="bi bi-skip-backward-circle-fill fs-5"></i> Back</button>
+          </div>
+      </div>
+      <div class="card-body shadow">
+       <form [formGroup]="createprofrm" (submit)="CreateProduct(createprofrm.value)">
+        <div class="d-flex mb-3">
+            <div class="col-2 me-4">
+                <label class="form-label">Sku</label>
+                <input class="form-control" placeholder="Enter Sku" type="text" formControlName="productSku">
+             </div>
+             <div class="col-3 me-4">
+                 <label class="form-label">Name<span class="text-danger">*</span></label>
+                 <input class="form-control" placeholder="Enter Name" type="text" formControlName="productName">
+                 <div class="text-danger" *ngIf="createprofrm.controls['productName'].touched && createprofrm.controls['productName'].invalid">
+                  <div *ngIf="createprofrm.controls['productName'].errors?.['required']">Name Required</div>
+               </div> 
+              </div> 
+              <div class="col-2 me-4">
+                <label class="form-label">Brand Name<span class="text-danger">*</span></label>
+                <input class="form-control" placeholder="Enter ShortName" type="text" formControlName="brandName">
+                <div class="text-danger" *ngIf="createprofrm.controls['brandName'].touched && createprofrm.controls['brandName'].invalid">
+                  <div *ngIf="createprofrm.controls['brandName'].errors?.['required']">ShortName Required</div>
+                </div>
+              </div>
+              <div class="col-2 me-3">
+                <label class="form-label">BankOffer in %</label>
+                <input class="form-control" placeholder="Ex:- 10%" type="text" formControlName="bankofferinpercentage">
+               </div>
+               <div class="col-2">
+                <label class="form-label">Bank & Card</label>
+                <input class="form-control" placeholder="EX:- CD&DC" type="text" formControlName="bankandcard">
+               </div>  
+              </div>             
+          <div class="d-flex mb-3">
+            <div class="col- me-4">
+                <label class="form-label">Style Code<span class="text-danger">*</span></label>
+                <input class="form-control" placeholder="Enter Style Code" type="text" formControlName="stylecode">
+                <div class="text-danger" *ngIf="createprofrm.controls['stylecode'].touched && createprofrm.controls['stylecode'].invalid">
+                  <div *ngIf="createprofrm.controls['stylecode'].errors?.['required']">StyleCode Required</div>
+                </div>
+             </div>
+             <div class="col-3 me-4">
+                 <label class="form-label">Pattern<span class="text-danger">*</span></label>
+                 <input class="form-control" placeholder="Ex:- Woven" type="text" formControlName="pattern">
+                 <div class="text-danger" *ngIf="createprofrm.controls['pattern'].touched && createprofrm.controls['pattern'].invalid">
+                  <div *ngIf="createprofrm.controls['pattern'].errors?.['required']">pattern Required</div>
+                </div>  
+              </div>
+              <div class="col-3 me-4">
+                <label class="form-label">Occasion<span class="text-danger">*</span></label>
+                <input class="form-control" placeholder="Ex:-Wedding & Festive, Party & Festive" type="text" formControlName="occasion">
+                <div class="text-danger" *ngIf="createprofrm.controls['occasion'].touched && createprofrm.controls['occasion'].invalid">
+                 <div *ngIf="createprofrm.controls['occasion'].errors?.['required']">pattern Required</div>
+               </div>  
+              </div>
+              <div class="col-2 me-4">
+                <label class="form-label">Blose Piece Length<span class="text-danger">*</span></label>
+                <input class="form-control" placeholder="Ex:-0.8 m" type="text" formControlName="blosepiecelength">
+                <div class="text-danger" *ngIf="createprofrm.controls['blosepiecelength'].touched && createprofrm.controls['blosepiecelength'].invalid">
+                 <div *ngIf="createprofrm.controls['blosepiecelength'].errors?.['required']">pattern Required</div>
+               </div>  
+              </div>
+              <div class="col-2">
+                <label class="form-label">Sari Length<span class="text-danger">*</span></label>
+                <input class="form-control" placeholder="Ex:-80CM" type="text" formControlName="sarilength">
+                <div class="text-danger" *ngIf="createprofrm.controls['sarilength'].touched && createprofrm.controls['sarilength'].invalid">
+                 <div *ngIf="createprofrm.controls['sarilength'].errors?.['required']">pattern Required</div>
+               </div>  
+              </div>
+          </div>
+          <div class="d-flex mb-3">
+            <div class="col-1 me-4">
+                <label class="form-label">Original Price<span class="text-danger">*</span></label>
+                <input class="form-control" placeholder="OriginalPrice" type="number" formControlName="productPrice">
+                <div class="text-danger" *ngIf="createprofrm.controls['productPrice'].touched && createprofrm.controls['productPrice'].invalid">
+                 <div *ngIf="createprofrm.controls['productPrice'].errors?.['required']">Originalprice Required</div>
+               </div> 
+            </div>
+            <div class="col-1 me-4">
+                <label class="form-label">Giving Price<span class="text-danger">*</span></label>
+                <input class="form-control" placeholder="Giving Price" type="number" formControlName="givingPrice">
+                <div class="text-danger" *ngIf="createprofrm.controls['givingPrice'].touched && createprofrm.controls['givingPrice'].invalid">
+                 <div *ngIf="createprofrm.controls['givingPrice'].errors?.['required']">GivingPrice Required</div>
+               </div> 
+            </div>
+            <div class="col-1 me-4">
+                <label class="form-label">QTY<span class="text-danger">*</span></label>
+                <input class="form-control" placeholder="Item QTY" type="number" formControlName="itemqty">
+                <div class="text-danger" *ngIf="createprofrm.controls['itemqty'].touched && createprofrm.controls['itemqty'].invalid">
+                 <div *ngIf="createprofrm.controls['itemqty'].errors?.['required']">GivingPrice Required</div>
+               </div> 
+            </div>
+            <div class="col-1 me-4">
+                <label class="form-label">Off<span class="text-danger">*</span></label>
+                <input class="form-control" placeholder="EX:-15%" type="number" formControlName="off">
+                <div class="text-danger" *ngIf="createprofrm.controls['off'].touched && createprofrm.controls['off'].invalid">
+                 <div *ngIf="createprofrm.controls['off'].errors?.['required']">Off Required</div>
+               </div> 
+            </div>
+            <div class="col-2 me-2">
+                <label class="form-label">Category<span class="text-danger">*</span></label>
+                <select class="form-select" formControlName="categoryId">
+                    <option disabled selected value="0">Select a category</option>
+                    <option *ngFor="let cat of allcategory" [value]="cat.categoryId">{{cat.categoryName}}</option>
+                </select>
+                <div class="text-danger" *ngIf="createprofrm.controls['categoryId'].touched && createprofrm.controls['categoryId'].invalid">
+                  <div *ngIf="createprofrm.controls['categoryId'].errors?.['required']">Category Rrequired</div>
+                </div>
+             </div>
+             <div class="col-1 me-3">
+                 <label class="form-label">Delivery Time<span class="text-danger">*</span></label>
+                 <input class="form-control" placeholder="2-3Days" type="text" formControlName="deliveryTimeSpan">
+                 <div class="text-danger" *ngIf="createprofrm.controls['deliveryTimeSpan'].touched && createprofrm.controls['deliveryTimeSpan'].invalid">
+                  <div>TimeSpan Required</div>
+                 </div>
+              </div>
+              <div class="col-1 me-3">
+                <label class="form-label">Ratings</label>
+                <input class="form-control" placeholder="Rating" type="text" formControlName="rating">
+              </div>
+              <div class="col-1 me-3">
+                <label class="form-label">Reviews</label>
+                <input class="form-control" placeholder="Reviews" type="text" formControlName="review">
+              </div>
+              <div class="col-1">
+                <label class="form-label">Rating In digits</label>
+                <input class="form-control" placeholder="Ex:- 4.8" type="text" formControlName="ratingindegits">
+              </div>
+          </div>
+          <div class="col-12 mb-3 d-flex">
+            <div class="col-2 me-4">
+                <label class="form-label">Image Url-1<span class="text-danger">*</span></label>
+            <input class="form-control" placeholder="Enter Image Url-1" type="text" formControlName="firstproductImageUrl">
+            <div class="text-danger" *ngIf="createprofrm.controls['firstproductImageUrl'].touched && createprofrm.controls['firstproductImageUrl'].invalid">
+              <div>ImageUrl-1 Required</div>
+             </div>
+            </div>
+            <div class="col-2 me-4">
+                <label class="form-label">Image Url-2<span class="text-danger">*</span></label>
+            <input class="form-control" placeholder="Enter Image Url-2" type="text" formControlName="secondproductImageUrl">
+            <div class="text-danger" *ngIf="createprofrm.controls['secondproductImageUrl'].touched && createprofrm.controls['secondproductImageUrl'].invalid">
+              <div>ImageUrl-2 Required</div>
+             </div>
+            </div>
+            <div class="col-2 me-4">
+                <label class="form-label">Image Url-3<span class="text-danger">*</span></label>
+            <input class="form-control" placeholder="Enter Image Url-3" type="text" formControlName="thirdproductImageUrl">
+            <div class="text-danger" *ngIf="createprofrm.controls['thirdproductImageUrl'].touched && createprofrm.controls['thirdproductImageUrl'].invalid">
+              <div>ImageUrl-3 Required</div>
+             </div>
+            </div>
+            <div class="col-2 me-4">
+                <label class="form-label">Image Url-4<span class="text-danger">*</span></label>
+            <input class="form-control" placeholder="Enter Image Url-4" type="text" formControlName="fourthproductImageUrl">
+            <div class="text-danger" *ngIf="createprofrm.controls['fourthproductImageUrl'].touched && createprofrm.controls['fourthproductImageUrl'].invalid">
+              <div>ImageUrl-4 Required</div>
+             </div>
+            </div>
+            <div class="col-2 me-4">
+                <label class="form-label">Image Url-5<span class="text-danger">*</span></label>
+            <input class="form-control" placeholder="Enter Image Url-5" type="text" formControlName="fifthproductImageUrl">
+            <div class="text-danger" *ngIf="createprofrm.controls['fifthproductImageUrl'].touched && createprofrm.controls['fifthproductImageUrl'].invalid">
+              <div>ImageUrl-5 Required</div>
+             </div>
+            </div>
+            <div class="col-1 me-4">
+                <label class="form-label">Image Url-6<span class="text-danger">*</span></label>
+            <input class="form-control" placeholder="Enter Image Url-6" type="text" formControlName="sixthproductImageUrl">
+            <div class="text-danger" *ngIf="createprofrm.controls['sixthproductImageUrl'].touched && createprofrm.controls['sixthproductImageUrl'].invalid">
+              <div>ImageUrl-6 Required</div>
+             </div>
+            </div>
+         </div>
+         <div class="col-12 mb-3">
+            <label class="form-label">Product Description<span class="text-danger">*</span></label>
+            <textarea class="form-control" placeholder="Enter Description" formControlName="productDescription"></textarea>
+            <div class="text-danger" *ngIf="createprofrm.controls['productDescription'].touched && createprofrm.controls['productDescription'].invalid">
+              <div>Description Required</div>
+             </div>
+            </div>
+            <div class="row ms-5">
+              <div class="col-6">
+                <button class="btn btn-success fs-5" *ngIf='showCreateButton' >Create Product</button>
+                <button type="button" (click)="update()" class="btn btn-info fs-5 text-white"  *ngIf="showUpdateButton">Update Product</button>
+              </div>                  
+                <div class="col-6">
+                  <button type="button" class="btn btn-warning fs-5 text-white" (click)="Resetprdfrm()">Reset</button>
+                 </div>
+             </div>
+       </form>
+        </div>
+      </div>
+    </div>

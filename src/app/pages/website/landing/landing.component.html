@@ -1,0 +1,318 @@
+<!-- 
+<div class="main-navbar shadow-sm sticky-top">
+  <div class="top-navbar">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-md-2 my-auto  d-none d-sm-none d-md-block d-lg-block">
+                  <h5 class="brand-name ms-4 fs-5 mt-2" routerLink="/shop">Kalamkari.com</h5>
+              </div>
+              <div class="col-md-5  my-auto">
+                  <form role="search">
+                      <div class="input-group">
+                          <input type="search" placeholder="Search your product"  #searchInput class="form-control" />
+                          <button class="btn bg-white" type="submit" (click)="search(searchInput.value)">
+                              <i class="fa fa-search"></i>
+                          </button>
+                      </div>
+                  </form>
+              </div>
+              <div class="col-md-5 my-auto">
+                  <ul class="nav justify-content-end me-3">
+                      <li class="nav-item">
+                          <a class="nav-link" routerLink="/cart">
+                              <i class="fa fa-shopping-cart text-warning fs-5 "></i> Cart ({{ CartItems.length}})
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" routerLink="/watch">
+                              <i class="fa fa-heart text-danger  fs-5"></i> Wishlist ({{WatchList.length}})
+                          </a>
+                      </li>
+                      <li class="nav-item dropdown" #dropdown>
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" (click)="toggleDropdown($event)">
+                            <i class="fa fa-user text-black fs-5"></i> Username 
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown" [ngClass]="{ 'show': isDropdownOpen }" (click)="dropdownClick($event)">
+                            <li><a class="dropdown-item" ><i class="fa fa-user"></i> Profile</a></li>
+                            <li><a class="dropdown-item" routerLink="orders" ><i class="fa fa-list"></i> My Orders</a></li>
+                            <li><a class="dropdown-item" routerLink="watch"><i class="fa fa-heart"></i> My Wishlist</a></li>
+                            <li><a class="dropdown-item"  routerLink="cart"><i class="fa fa-shopping-cart"></i> My Cart</a></li>
+                            <li><a class="dropdown-item" routerLink="/"><i class="fa fa-sign-out"></i> Logout</a></li>
+                        </ul>
+                    </li>                                               
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+  <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+          <a class="navbar-brand d-block d-sm-block d-md-none d-lg-none" routerLink="/shop">
+              KALAMKARI SHOPPING
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item" *ngFor="let category of allcategories" (click)="navigatetoproducts(category.categoryId)">
+                      <a class="nav-link" type="button">{{category.categoryName}}</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </nav>
+  </div> -->
+<div class="container-fluid nav-bar">
+  <div class="row">
+    <div class="d-flex justify-content-end mt-5">
+      <div class="me-4 fs-6"><i class="bi bi-person-fill fs-6"></i> Login</div>
+      <div class="me-4  btn btn-light position-relative bi bi-cart-fill" type="button" routerLink="/cart"
+        style="cursor: pointer">
+        <span class="badge rounded-circle bg-danger position-absolute">{{
+          CartItems.length
+          }}</span>
+      </div>
+      <div class="me-4 fs-6">
+        <span class="bi bi-balloon-heart-fill fs-6"></span>(1)
+      </div>
+      <div class="me-4" (click)="OpenModel()">
+        <i class="bi bi-search fs-6"></i>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col text-center">
+        <img src="assets\lotos-logo.png" width="" height="100" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="d-flex justify-content-center">
+        <div class="me-3">
+          <button mat-button class="fs-6" [routerLink]="['/shop']" style="
+              font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+                sans-serif;
+            ">
+            Home
+          </button>
+        </div>
+        <div class="me-3">
+          <button mat-button [matMenuTriggerFor]="saries" class="fs-6" style="
+              font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+                sans-serif;
+            ">
+            Saries
+          </button>
+        </div>
+        <div class="me-3">
+          <button mat-button [matMenuTriggerFor]="dressmaterials" class="fs-6" style="
+              font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+                sans-serif;
+            ">
+            Dress Materials
+          </button>
+        </div>
+        <div class="me-3">
+          <button mat-button [matMenuTriggerFor]="duppatas" class="fs-6" style="
+              font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+                sans-serif;
+            ">
+            Duppatas
+          </button>
+        </div>
+        <div>
+          <button mat-button [matMenuTriggerFor]="kuthis" class="fs-6" style="
+              font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+                sans-serif;
+            ">
+            Kurthis,Dresses&Others
+          </button>
+        </div>
+      </div>
+      <!-- kalamkarisaries category -->
+      <mat-menu #saries="matMenu">
+        <button mat-menu-item [matMenuTriggerFor]="Kalamkarisaries">
+          Kalamkari Saries
+        </button>
+      </mat-menu>
+
+      <mat-menu #Kalamkarisaries="matMenu">
+        <button mat-menu-item [routerLink]="['/productlist/KalamkariSilksarees/25']">
+          Kalamkari Silk Saree
+        </button>
+        <button mat-menu-item [routerLink]="['/productlist/KalamkariCottonSaree/15']">
+          Kalamkari Cotton Saree
+        </button>
+        <button mat-menu-item>Kalamkari Crepe Saree</button>
+        <button mat-menu-item>Designer Kalamkari Saree</button>
+        <button mat-menu-item>Kalamkari Linen Printed Saree</button>
+        <button mat-menu-item>Kalamkari Border Sari</button>
+        <button mat-menu-item>Kalamkari Pattu Sarees</button>
+        <button mat-menu-item>Hand-Painted Kalamkari Sarees</button>
+        <button mat-menu-item>Kalamkari Georgette Saree</button>
+        <button mat-menu-item>Kalamkari Chiffon Saree</button>
+      </mat-menu>
+      <!-- Dress Material Category -->
+      <mat-menu #dressmaterials="matMenu">
+        <button mat-menu-item [matMenuTriggerFor]="materiallist">
+          All Dress Materials
+        </button>
+      </mat-menu>
+
+      <mat-menu #materiallist="matMenu">
+        <button mat-menu-item>All Unstitched Dress Materials</button>
+        <button mat-menu-item>Hand Block Print Dress Materials</button>
+        <button mat-menu-item>Ikat Dress Materials</button>
+        <button mat-menu-item>Cotton Dress Materials</button>
+        <button mat-menu-item>Mangalagiri Dress Material</button>
+        <button mat-menu-item>Banaras Dress Material</button>
+        <button mat-menu-item>Kalamkari Dress Material</button>
+        <button mat-menu-item>Kota Dress Material</button>
+      </mat-menu>
+      <!-- Duppatas Category -->
+      <mat-menu #duppatas="matMenu">
+        <button mat-menu-item>All Duppattas</button>
+        <button mat-menu-item>Ikat Dupattas</button>
+        <button mat-menu-item>Handloom Duppattas</button>
+        <button mat-menu-item>Pen Kalamkari</button>
+        <button mat-menu-item>Gadwal Duppattas</button>
+        <button mat-menu-item>Patola Duppattas</button>
+        <button mat-menu-item>Bandhani Duppattas</button>
+        <button mat-menu-item>Kalamkari Duppattas</button>
+      </mat-menu>
+      <!-- Kuthis Category -->
+      <mat-menu #kuthis="matMenu">
+        <button mat-menu-item>Kurthis & Dresses</button>
+        <button mat-menu-item>Gowns</button>
+        <button mat-menu-item>Kaftans</button>
+        <button mat-menu-item>Jewellery</button>
+        <button mat-menu-item>Bagas</button>
+        <button mat-menu-item>Bed Sheets</button>
+        <button mat-menu-item>Night Wears</button>
+        <button mat-menu-item>Cord Sets</button>
+      </mat-menu>
+    </div>
+  </div>
+</div>
+<div>
+</div>
+<div class="container-fluid">
+  <router-outlet></router-outlet>
+</div>
+<div>
+  <div class="d-flex text-center mt-5 mb-5">
+    <div class="row mb-5 subscribe p-5">
+      <div class="fs-2 text-center p-5">
+        We Would Like to Keep intouch with you
+      </div>
+      <div class="text-center fs-5">
+        Subscribe to our email list to know about our weavers, clusters, events,
+        <br />
+        special deals, and discounts
+      </div>
+      <div class="text-center mt-3">
+        <input type="text" class="centered-placeholder" placeholder="email@example.com"
+          style="width: 555px; height: 45px; border: none" /><button class="bg-black text-white"
+          style="width: 225px; height: 45px">
+          Subscribe
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="d-flex text-center p-4">
+  <div class="col">
+    <h3 class="fs-6"><b>About Us</b></h3>
+    <p style="text-align: justify">
+      We have set ourselves an ambitious goal: To bring together the weaving
+      community and the buyers into close contact. That is to connect weavers
+      and wearers. Every weave is created with a lot of passion and hard work by
+      weavers. Before the big cities with all the shopping options came up, most
+      of the buyers used to buy directly from weavers. This enabled the buyers
+      to appreciate the effort put in by weavers and also create an immense
+      sense of satisfaction for the weaver when they actually see their weave
+      being worn. Buying now has become an impersonal thing. Buyers now have
+      very little knowledge about how an article they are using is crafted. Our
+      effort is to reduce this distance. By creating a platform where weavers
+      can directly post their weaves online, we can now give everyone a glimpse
+      of the weaver who crafted the weave.
+    </p>
+    <div style="text-align: left">Developer: Naveen</div>
+  </div>
+  <div class="col">
+    <h3 class="fs-6"><b>Contact</b></h3>
+    <div>examplekalamkarimart&#64;example.com</div>
+    <div>+91 9515126992</div>
+    <div>MIG 172, brahmapuram Colony, pedana,</div>
+    <div>Pedana Andrapradesh</div>
+    <div>521366 India</div>
+    <div class="mt-3">
+      <span class="me-4 fs-5"><i class="bi bi-facebook"></i></span>
+      <span class="me-4 fs-5"><i class="bi bi-instagram"></i></span>
+      <span class="me-4 fs-5"><i class="bi bi-youtube"></i></span>
+    </div>
+  </div>
+  <div class="col">
+    <h3 class="fs-6"><b>Menu</b></h3>
+    <div>Menu</div>
+    <div>About Us</div>
+    <div>F.A.Qs</div>
+    <div>Shipping Policy</div>
+    <div>Return Policy</div>
+    <div>Privacy Policy</div>
+    <div>Other Terms</div>
+    <div>Careers</div>
+  </div>
+</footer>
+<div class="subfoorter"></div>
+<!-- model popup -->
+<div class="modal" id="myModal" [ngClass]="{ 'fade-background': showModal }">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content p-3">
+      <!-- Modal Header -->
+      <div class="modal-header heading">
+        <div class="p-1 fs-5">Search Details</div>
+        <button type="button" class="btn-close" (click)="closemodel()" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="model-body">
+        <div class="mt-3 align-item-center">
+          <input type="text" placeholder="Search Our Store..." class="form-control" style="height: 52px" />
+          <div class="row mt-3">
+            <div class="col ms-5">
+              <button class="btn btn-success w-50">Search</button>
+            </div>
+            <div class="col ms-3">
+              <button class="btn btn-danger w-50" (click)="closemodel()">
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal footer -->
+      <div class="mode-footer mt-5">
+        <div class="fs-5 text-center">Main Menu</div>
+        <div class="d-flex mt-4">
+          <div class="ms-5 me-5">
+            <ul class="fs-6" style="list-style: none">
+              <li>Home</li>
+              <li>Dress Materials</li>
+              <li>Handloom Culture</li>
+              <li>Lehamgas</li>
+              <li>Kuthis,Dresses&Others</li>
+            </ul>
+          </div>
+          <div class="ms-5">
+            <ul class="fs-6" style="list-style: none">
+              <li>Kanchipuram</li>
+              <li>Sarees</li>
+              <li>Dupattas</li>
+              <li>Boutique</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

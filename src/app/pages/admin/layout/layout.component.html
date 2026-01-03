@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg stricky shadow-lg rounded">
+    <div class="container-fluid">
+      <a class="navbar-brand ms-5" routerLink="/dashboard"><img src="https://icon-library.com/images/admin-login-icon/admin-login-icon-24.jpg" width="60" height="45"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item fs-5 ms-3" style="font-style: italic;">
+            <a class="nav-link active" aria-current="page" routerLink="/products">Products</a>
+          </li>
+          <li class="nav-item fs-5 ms-4" style="font-style: italic;">
+            <a class="nav-link" routerLink="/category">Category</a>
+          </li>
+          <li class="nav-item fs-5 ms-3" style="font-style: italic;">
+            <a class="nav-link" routerLink="/order" >Orders</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <button class="btn btn-outline-dark" type="submit" *ngIf="!showSearchButton" routerLink="/login" >Logout</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+ <div class="container-fluid">
+  <router-outlet></router-outlet>
+ </div>

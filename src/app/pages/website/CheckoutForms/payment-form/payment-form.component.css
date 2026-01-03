@@ -1,0 +1,22 @@
+.box{
+    border:2px solid rgb(210, 210, 210);
+    padding: 20px;
+    border-radius: 5px;
+    background-color: white;
+}
+.bg{
+ background-color:rgb(210, 210, 210) ;
+ padding: 20px;
+ border-radius: 5px;
+}
+:host ::ng-deep .contries .p-dropdown{
+    width:505px;
+}
+:host ::ng-deep .states .p-dropdown{
+    width:165px;
+    height: 52px;
+}
+.border{
+    border:2px solid black;
+    padding:10px;
+}
