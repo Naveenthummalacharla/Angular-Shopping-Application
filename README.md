@@ -1,6 +1,6 @@
 # Shopping Application Application
 
-This project is an Angular 17 front-end application powered by a JSON Server backend for development.
+This project is an Angular 16 front-end application powered by a JSON Server backend for development.
 
 ---
 
