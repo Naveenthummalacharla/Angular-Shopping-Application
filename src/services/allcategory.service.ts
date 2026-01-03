@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AllcategoryService {
 
-  constructor(private http:HttpClient) { }
+constructor(private http:HttpClient) { }
  public  GetallCategory():Observable<any>{
     return this.http.get<any>(" http://localhost:3000/data")
  }
