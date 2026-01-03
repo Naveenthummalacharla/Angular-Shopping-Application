@@ -30,7 +30,7 @@ export class AuthService {
         JSON.stringify({ isLoggedIn: true, userRole: 'admin' })
       );
       return true;
-    } else if (username === 'user' && password === 'user') {
+    } else if (username === 'frontdesk' && password === 'frontdesk') {
       this.isLoggedin = true;
       this.userRole = 'user';
       sessionStorage.setItem(
